@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data To DB Test</title>
+</head>
+<body>
+    <label for="fname">First Name:</label>
+    <input type="text" name="fname" id="fname">
+    <label for="lname">Last Name:</label>
+    <input type="text" name="lname" id="lname">
+    <button id="submit">Submit</button>
+
+    <script>
+        const fname = document.querySelector("#fname");
+        const lname = document.querySelector("#lname");
+        const submit = document.querySelector("#submit");
+
+        submit.addEventListener("click", async () => {
+            const data = { fname: fname.value, lname: lname.value };
+
+            try {
+                const response = await fetch('http://localhost:3000/add-data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert("Data added successfully: " + JSON.stringify(result.user));
+                } else {
+                    alert("Error: " + result.error);
+                }
+            } catch (err) {
+                alert("Failed to send data: " + err.message);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // MongoDB Connection
-const mongoURI = "mongodb+srv://admin:Ahmad5568@cluster0.ncheo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURI = process.env.MONGO_URI;
 mongoose
     .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB"))

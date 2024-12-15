@@ -73,7 +73,7 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:${port}/add-data`, {
+                const response = await fetch(`http://localhost:3000/add-data`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ fname, lname })

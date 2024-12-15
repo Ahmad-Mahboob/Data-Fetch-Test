@@ -65,7 +65,6 @@
         document.querySelector("#submit").addEventListener("click", async () => {
             const fname = document.querySelector("#fname").value;
             const lname = document.querySelector("#lname").value;
-            let port = process.env.PORT || 3000
 
             if (!fname || !lname) {
                 alert("Please fill out both fields.");

@@ -65,6 +65,7 @@
         document.querySelector("#submit").addEventListener("click", async () => {
             const fname = document.querySelector("#fname").value;
             const lname = document.querySelector("#lname").value;
+            let port = process.env.PORT || 3000
 
             if (!fname || !lname) {
                 alert("Please fill out both fields.");
@@ -72,7 +73,7 @@
             }
 
             try {
-                const response = await fetch("http://localhost:3000/add-data", {
+                const response = await fetch(`http://localhost:${port}/add-data`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ fname, lname })

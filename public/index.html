@@ -71,7 +71,7 @@
             let port = process.env.PORT || 3000
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:${port}/get-data`);
+                const response = await fetch(`http://localhost:3000/get-data`);
                 const users = await response.json();
 
                 const userList = document.querySelector('#user-list');
